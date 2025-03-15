@@ -1,18 +1,3 @@
-vim.opt.clipboard = "unnamedplus"
-vim.g.clipboard = {
-  name = "win32yank",
-  copy = {
-    ["+"] = "win32yank.exe -i --crlf",
-    ["*"] = "win32yank.exe -i --crlf",
-  },
-
-  paste = {
-    ["+"] = "win32yank.exe -o --lf",
-    ["*"] = "win32yank.exe -o --lf",
-  },
-  cache_enabled = 0,
-}
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
@@ -113,6 +98,12 @@ require("lazy").setup({
             enable = true,
           },
         })
+      end,
+    },
+    {
+      "ojroques/nvim-osc52",
+      config = function()
+        require("osc52").setup()
       end,
     },
 
