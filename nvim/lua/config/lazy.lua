@@ -1,3 +1,18 @@
+vim.opt.clipboard = "unnamedplus"
+
+vim.g.clipboard = {
+  name = "win32yank",
+  copy = {
+    ["+"] = "wine /usr/local/bin/win32yank.exe -i --crlf",
+    ["*"] = "wine /usr/local/bin/win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "wine /usr/local/bin/win32yank.exe -o --lf",
+    ["*"] = "wine /usr/local/bin/win32yank.exe -o --lf",
+  },
+  cache_enabled = 1,
+}
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local lazyrepo = "https://github.com/folke/lazy.nvim.git"
